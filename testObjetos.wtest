@@ -1,0 +1,23 @@
+import Objetos.*
+   
+test "prueba jugador"
+{
+    const messi = new Jugador(  porcentajeBuenosPases = 0.90, penalesAtajados = 0, cantMarcas = 3,
+                                posicion = mediocampista, goles = 91)
+
+    const neuer = new Jugador(  porcentajeBuenosPases = 0.40, penalesAtajados = 33, cantMarcas = 0,
+                                posicion = delantero, goles = 1)
+
+    const equipo = new Equipo(jugadores = [messi, neuer])
+
+    assert.notThat(equipo.jugadoresBuenos() == [messi, neuer])
+    assert.that(equipo.jugadoresBuenos() == [messi])
+
+    // Ahora cambiamos ambas posiciones para ver si funciona
+
+    messi.cambiarPosicion(delantero)
+    neuer.cambiarPosicion(arquero)
+
+    assert.that(equipo.jugadoresBuenos() == [messi, neuer])
+
+}
